@@ -217,8 +217,13 @@ nav.main-nav {
 }
 
 .card img {
-  width: 100%;
-  height: auto;
+  .card img {
+    aspect-ratio: 3 / 4; /* or whatever ratio fits your images */
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+  
   display: block;
   border-bottom: 1px solid #eee;
 }
@@ -240,6 +245,17 @@ nav.main-nav {
   text-align: center;
   padding-bottom: 10px;
   margin: 0;
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* === Light/Dark Mode Variables === */

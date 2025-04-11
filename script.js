@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
     const closeLightbox = document.querySelector(".close");
-
     const hamburger = document.querySelector(".hamburger");
     const mainMenu = document.querySelector(".main-menu");
 
@@ -41,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const img = document.createElement("img");
             img.src = imgPath;
             img.alt = title;
+            img.loading = "lazy";
             img.onerror = () => card.remove();
 
             const titleEl = document.createElement("p");
@@ -65,6 +65,21 @@ categoryEl.textContent = readableCategory;
             cardsContainer.appendChild(card);
         });
     }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // only animate once
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
+      });      
 
     // Load image data from titles.json
     fetch('titles.json')
