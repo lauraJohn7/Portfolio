@@ -1,0 +1,496 @@
+/**
+ * CLEANED UP AND RESTORED: Working dropdown menu + 5-column grid gallery + dark mode toggle enhancements + responsive polish
+ */
+
+/* === Basic Layout === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+  text-align: left;
+  font-size: 24px;
+}
+
+.theme-toggle {
+  position: sticky;
+  top: 70px; /* just below your header */
+  z-index: 90;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* === Nav Menu and Dropdowns === */
+nav.main-nav {
+  background-color: #333;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.menu > li {
+  position: relative;
+}
+
+.menu a,
+.menu button {
+  color: white;
+  background: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.menu button:hover,
+.menu a:hover {
+  background-color: #444;
+}
+
+.menu .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #444;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.menu .dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu .dropdown {
+  position: relative;
+}
+
+.dropdown-menu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  display: none;
+  position: absolute;
+}
+
+.dropdown-menu .dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+/* === Gallery === */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  align-items: start; /* Key for variable height cards */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 10px;
+  width: 100%;
+  /* ❌ Do NOT set a fixed height here */
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #eee;
+}
+
+.card .title {
+  font-size: 14px;
+  margin: 10px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Dark Mode Styling === */
+body.dark-mode {
+  background-color: #111;
+  color: #f0f0f0;
+}
+
+body.dark-mode header {
+  background-color: #111;
+}
+
+body.dark-mode nav.main-nav {
+  background-color: #111;
+}
+
+body.dark-mode .menu a,
+body.dark-mode .menu button {
+  color: #f0f0f0;
+}
+
+body.dark-mode .dropdown-menu {
+  background-color: #222;
+}
+
+body.dark-mode .card {
+  background-color: #222;
+  color: white;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .card img {
+  border-bottom: 1px solid #444;
+}
+
+/* Lightbox container styling */
+#lightbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+}
+
+/* Hidden state */
+#lightbox.hidden {
+  display: none;
+}
+
+/* Lightbox image styling */
+#lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+  margin-bottom: 10px;
+}
+
+#lightbox-title {
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Close button */
+#lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#lightbox.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-title {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.card[data-category*="teaching"] {
+  display: none !important;
+}
+
+footer.contact-section {
+  background-color: #333;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+footer.contact-section a {
+  color: #90caf9;
+  text-decoration: none;
+}
+
+footer.contact-section a:hover {
+  text-decoration: underline;
+}
+
+.contact-btn {
+  background-color: #555;
+  color: white;
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: #777;
+}
+
+.floating-contact-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5c6bc0;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.floating-contact-btn:hover {
+  background-color: #3f51b5;
+}
+
+.floating-back-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5c6bc0;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.floating-back-btn:hover {
+  background-color: #3f51b5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 20px;
+}
+
+.header-btn {
+  background-color: #5c6bc0;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.header-btn:hover {
+  background-color: #3f51b5;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .main-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    z-index: 1000;
+  }
+
+  .main-menu.open {
+    display: flex;
+  }
+
+  .menu li {
+    margin: 10px 0;
+  }
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .main-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .main-menu.open {
+    display: flex;
+  }
+
+  .main-menu .menu {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .main-menu .menu li {
+    margin: 0.5rem 0;
+  }
+}

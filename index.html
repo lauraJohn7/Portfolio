@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura E. John - Teaching Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+
+</head>
+<body>
+<header>
+    <h1>Laura E. John - Art Educator</h1>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      ☰
+    </button>
+
+    <nav class="main-menu">
+  <ul class="menu">
+    <li class="dropdown">
+      <a href="#" class="filter-btn" data-category="ceramics">Ceramics</a>
+      <ul class="dropdown-menu">
+        <li class="dropdown">
+          <a href="#">Student Work</a>
+          <ul class="dropdown-menu">
+            <li><button class="filter-btn" data-category="beginning_ceramics">Beginning Ceramics</button></li>
+            <li><button class="filter-btn" data-category="advanced_ceramics">Advanced Ceramics</button></li>
+          </ul>
+        </li>
+        <li><button class="filter-btn" data-category="my_ceramics">My Work</button></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" class="filter-btn" data-category="sculpture">Sculpture</a>
+
+      <ul class="dropdown-menu">
+        <li><button class="filter-btn" data-category="student_sculpture">Student Work</button></li>
+        <li><button class="filter-btn" data-category="my_sculpture">My Work</button></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" class="filter-btn" data-category="photography">Photography</a>
+
+      <ul class="dropdown-menu">
+        <li><button class="filter-btn" data-category="student_photography">Student Work</button></li>
+        <li><button class="filter-btn" data-category="my_photography">My Work</button></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" class="filter-btn" data-category="graphic_design">Graphic Design</a>
+      <ul class="dropdown-menu">
+        <li><button class="filter-btn" data-category="student_graphic_design">Student Work</button></li>
+        <li><button class="filter-btn" data-category="my_graphic_design">My Work</button></li>
+      </ul>
+    </li>
+
+    <li><button class="filter-btn" data-category="yearbook">Yearbook</button></li>
+    <li><button class="filter-btn" data-category="teaching">Lesson Plans</button></li>
+    <a href="#contact" class="header-btn">Contact</a>
+  <a href="files/Resume - Laura John.pdf" class="header-btn" target="_blank">Resume</a>
+  </ul>
+</nav>
+
+
+</header>
+
+<a href="#" id="backToTop" class="floating-back-btn">⬆ Back to Top</a>
+
+<div class="theme-toggle">
+  <label for="theme-switch">Dark Mode</label>
+  <label class="switch">
+    <input type="checkbox" id="theme-switch">
+    <span class="slider"></span>
+  </label>
+</div>
+
+
+<!-- Gallery Container -->
+<div class="gallery">
+    <!-- Image cards will be dynamically inserted here -->
+</div>
+
+<div id="lightbox" class="lightbox hidden">
+  <span class="close">&times;</span>
+  <img id="lightbox-img" src="" alt="Expanded View">
+  <p id="lightbox-title" class="lightbox-title"></p>
+</div>
+
+
+</body>
+
+<footer id="contact" class="contact-section">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:contact@laurajohn.com">contact@laurajohn.com</a></p>
+  <p>Instagram: <a href="https://instagram.com/laurajohn7" target="_blank">@laurajohn7</a></p>
+  <p>Website: <a href="https://www.laurajohn.com" target="_blank">laurajohn.com</a></p>
+</footer>
+
+</html>
