@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function addImageCardsFromJSON(folder, categories, images) {
         images.forEach(({ file, title }) => {
             const imgPath = `images/${folder}/${file}`;
-            console.log("Image Path:", imgPath); // Log the image path
             const card = document.createElement("div");
             card.className = "card";
             card.setAttribute("data-category", categories.join(" "));
@@ -48,8 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
             titleEl.className = "title";
             titleEl.textContent = title;
 
+           const categoryEl = document.createElement("p");
+            categoryEl.className = "category";
+
+const readableCategory = categories[categories.length - 1]
+  .replace(/_/g, " ")               // Replace underscores with spaces
+  .replace(/\b\w/g, c => c.toUpperCase()); // Capitalize each word
+
+  console.log("Category for card:", readableCategory); // 🔍 check if this prints
+
+categoryEl.textContent = readableCategory;
+
+
             card.appendChild(img);
             card.appendChild(titleEl);
+            card.appendChild(categoryEl);
             cardsContainer.appendChild(card);
         });
     }
@@ -80,22 +92,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Filtering (Supports Combined Categories)
     filterButtons.forEach(button => {
         button.addEventListener("click", () => {
-            const isTopLevelFilter = !button.closest(".dropdown-menu");
-            if (isTopLevelFilter && mainMenu.classList.contains("open")) {
-                mainMenu.classList.remove("open");
+          const isTopLevelFilter = !button.closest(".dropdown-menu");
+          if (isTopLevelFilter && mainMenu.classList.contains("open")) {
+            mainMenu.classList.remove("open");
+          }
+      
+          const category = button.getAttribute("data-category");
+          cardsContainer.querySelectorAll(".card").forEach(card => {
+            const cardCategories = card.getAttribute("data-category").split(" ");
+            if (category === "all" || cardCategories.includes(category) || category === "all_work") {
+              card.style.display = "flex";
+            } else {
+              card.style.display = "none";
             }
-
-            const category = button.getAttribute("data-category");
-            cardsContainer.querySelectorAll(".card").forEach(card => {
-                const cardCategories = card.getAttribute("data-category").split(" ");
-                if (category === "all" || cardCategories.includes(category) || category === "all_work") {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
+          });
         });
-    });
+      });
+      
 
     function openLightbox(src, title) {
         lightboxImg.src = src;

@@ -3,6 +3,7 @@
     "folder": "ceramics/my_ceramics",
     "category": [
       "all_work",
+      "my_work",
       "ceramics",
       "my_ceramics"
     ],
@@ -97,6 +98,7 @@
     "folder": "ceramics/student_ceramics/adv_ceramics",
     "category": [
       "all_work",
+      "student_work",
       "ceramics",
       "student_ceramics",
       "adv_ceramics"
@@ -296,6 +298,7 @@
     "folder": "ceramics/student_ceramics/beginner_ceramics",
     "category": [
       "all_work",
+      "student_work",
       "ceramics",
       "student_ceramics",
       "beginner_ceramics"
@@ -415,6 +418,7 @@
     "folder": "photography/my_photography",
     "category": [
       "all_work",
+      "my_work",
       "photography",
       "my_photography"
     ],
@@ -454,6 +458,7 @@
     "folder": "photography/student_photography",
     "category": [
       "all_work",
+      "student_work",
       "photography",
       "student_photography"
     ],
@@ -515,6 +520,7 @@
     "folder": "sculpture/my_sculpture",
     "category": [
       "all_work",
+      "my_work",
       "sculpture",
       "my_sculpture"
     ],
@@ -537,6 +543,7 @@
     "folder": "sculpture/student_sculpture",
     "category": [
       "all_work",
+      "student_work",
       "sculpture",
       "student_sculpture"
     ],
@@ -559,6 +566,7 @@
     "folder": "graphic_design/my_graphic_design",
     "category": [
       "all_work",
+      "my_work",
       "graphic_design",
       "my_graphic_design"
     ],
@@ -627,6 +635,7 @@
     "folder": "graphic_design/student_graphic_design",
     "category": [
       "all_work",
+      "student_work",
       "graphic_design",
       "student_graphic_design"
     ],
@@ -681,6 +690,7 @@
     "folder": "teaching",
     "category": [
       "all_work",
+      "my_work",
       "teaching"
     ],
     "images": [
@@ -742,6 +752,7 @@
     "folder": "yearbook",
     "category": [
       "all_work",
+      "my_work",
       "yearbook"
     ],
     "images": [

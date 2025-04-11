@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-    <h1>Laura E. John - Art Educator</h1>
+    <h1>Laura John - Art Educator</h1>
 
     <button class="hamburger" aria-label="Toggle menu">
       ☰
@@ -18,6 +18,14 @@
 
     <nav class="main-menu">
   <ul class="menu">
+    <li class="dropdown">
+      <a href="#" class="filter-btn" data-category="all_work">All Artwork</a>
+      <ul class="dropdown-menu">
+        <li><button class="filter-btn" data-category="student_work">Student Work</button></li>
+        <li><button class="filter-btn" data-category="my_work">My Work</button></li>
+      </ul>
+    </li>
+    
     <li class="dropdown">
       <a href="#" class="filter-btn" data-category="ceramics">Ceramics</a>
       <ul class="dropdown-menu">
@@ -59,9 +67,10 @@
     </li>
 
     <li><button class="filter-btn" data-category="yearbook">Yearbook</button></li>
-    <li><button class="filter-btn" data-category="teaching">Lesson Plans</button></li>
-    <a href="#contact" class="header-btn">Contact</a>
-  <a href="files/Resume - Laura John.pdf" class="header-btn" target="_blank">Resume</a>
+    <div class="header-buttons">
+      <a href="files/Your_Resume.pdf" class="header-btn" target="_blank">Resume</a>
+      <a href="#contact" class="header-btn">Contact</a>
+    </div>    
   </ul>
 </nav>
 
