@@ -209,6 +209,9 @@ nav.main-nav {
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .card:hover {
@@ -217,14 +220,10 @@ nav.main-nav {
 }
 
 .card img {
-  .card img {
-    aspect-ratio: 3 / 4; /* or whatever ratio fits your images */
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: auto;
-  }
-  
-  display: block;
+    display: block;
   border-bottom: 1px solid #eee;
 }
 
@@ -245,12 +244,6 @@ nav.main-nav {
   text-align: center;
   padding-bottom: 10px;
   margin: 0;
-}
-
-.card {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .card.visible {
