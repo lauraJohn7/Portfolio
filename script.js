@@ -107,6 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
         columnWidth: ".grid-sizer",
         percentPosition: true,
       });
+
+      cardsContainer.classList.add("ready"); // ⬅️ Makes gallery visible
     });
 
     // Lightbox click
