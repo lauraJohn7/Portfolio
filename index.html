@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura E. John - Teaching Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-<script src="script.js" defer></script>
+<script defer src="script.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
 
 </head>
 <body>
@@ -90,13 +93,23 @@
 
 <!-- Gallery Container -->
 <div class="gallery">
-    <!-- Image cards will be dynamically inserted here -->
-</div>
+    <div class="grid-sizer"></div>
+    <!-- Cards will be added here -->
+  </div>
 
-<div id="lightbox" class="lightbox hidden">
-  <span class="close">&times;</span>
-  <img id="lightbox-img" src="" alt="Expanded View">
-  <p id="lightbox-title" class="lightbox-title"></p>
+  <div id="lightbox" class="lightbox hidden">
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Expanded View">
+      <div class="lightbox-meta">
+        <p id="lightbox-title" class="lightbox-title"></p>
+        <p id="lightbox-medium" class="lightbox-medium"></p>
+        <p id="lightbox-year" class="lightbox-year"></p>
+        <p id="lightbox-description" class="lightbox-description"></p>
+      </div>
+    </div>
+    <span class="close">&times;</span>
+  </div>
+  
 </div>
 
 

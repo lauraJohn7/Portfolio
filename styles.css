@@ -12,17 +12,20 @@
   --button-gray-hover: #666;
 }
 
-/* === Base === */
+/* === Base Styles === */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: var(--bg-light);
+  color: var(--text-color-light);
   transition: background-color 0.3s, color 0.3s;
   scroll-behavior: smooth;
 }
 
-html {
-  scroll-behavior: smooth;
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-color-dark);
 }
 
 h1 {
@@ -34,7 +37,9 @@ h1 {
 
 /* === Header === */
 header {
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(270deg, var(--primary-color), var(--accent-color), var(--primary-color));
+  background-size: 600% 600%;
+  animation: gradientFlow 30s ease infinite;
   color: white;
   padding: 10px 20px;
   display: flex;
@@ -47,6 +52,11 @@ header {
   flex-wrap: wrap;
 }
 
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 /* === Theme Toggle === */
 .theme-toggle {
@@ -97,9 +107,11 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* === Navigation Menu === */
+/* === Navigation === */
 nav.main-nav {
-  background-color: var(--primary-color);
+  background: linear-gradient(270deg, var(--primary-color), var(--accent-color), var(--primary-color));
+  background-size: 600% 600%;
+  animation: gradientFlow 30s ease infinite;
 }
 
 .menu {
@@ -119,116 +131,108 @@ nav.main-nav {
   align-items: center;
 }
 
+.menu > li > a,
+.menu > li > button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
 .menu a,
 .menu button {
-  color: white;
   background: none;
+  color: white;
   border: none;
-  padding: 1rem;
-  font-size: 1rem;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
   text-decoration: none;
-  white-space: nowrap;
-  text-align: left;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
 
 .menu a:hover,
 .menu button:hover {
-  background-color: #574dff;
+  background-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+.dropdown {
+  position: relative;
 }
 
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #574dff;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
   list-style: none;
-  padding: 0;
+  padding: 10px 0;
   margin: 0;
   min-width: 200px;
   z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.dropdown:hover > .dropdown-menu,
+.menu li:hover > .dropdown-menu {
+  display: flex;
+}
+
 .dropdown-menu .dropdown:hover > .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu .dropdown {
-  position: relative;
-}
-
-.dropdown-menu .dropdown-menu {
+  display: flex;
   left: 100%;
   top: 0;
-  display: none;
   position: absolute;
 }
 
-/* === Special Gray Buttons === */
-.header-buttons .header-btn:nth-child(1),
-.header-buttons .header-btn:nth-child(2) {
-  background-color: var(--button-gray);
-  color: white;
-}
-
-.header-buttons .header-btn:nth-child(1):hover,
-.header-buttons .header-btn:nth-child(2):hover {
-  background-color: var(--button-gray-hover);
-}
-
-/* === Masonry Gallery === */
-.gallery {
-  column-count: 4;
-  column-gap: 20px;
-  padding: 20px;
-}
-
-@media (max-width: 1200px) {
-  .gallery { column-count: 3; }
-}
-
-@media (max-width: 900px) {
-  .gallery { column-count: 2; }
-}
-
-@media (max-width: 600px) {
-  .gallery { column-count: 1; }
-}
-
+/* === Card Styling === */
 .card {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 20px;
-  break-inside: avoid;
+  width: calc(25% - 20px); /* Leave space for gutters */
+  margin: 0 10px 20px;
+  float: left;
+  box-sizing: border-box;
   background-color: var(--card-bg-light);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.grid-sizer {
+  width: 25%;
+  float: left;
+}
+
+
+.card-inner {
+  padding: 0 10px;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover {
-  transform: scale(1.02);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card img {
-    object-fit: contain;
-    width: 100%;
-    height: auto;
-    display: block;
+  object-fit: cover;
+  height: auto;
+  width: 100%;
+  display: block;
   border-bottom: 1px solid #eee;
 }
 
-/* === Card Titles and Categories === */
 .card .title {
   font-weight: bold;
   font-size: 1rem;
@@ -247,26 +251,43 @@ nav.main-nav {
   margin: 0;
 }
 
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* === Masonry Gallery === */
+.gallery {
+  display: block;
+  margin: 0 auto;
+  max-width: 1400px;
+  position: relative;
 }
 
-/* === Light/Dark Mode Variables === */
+.gallery::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Responsive Masonry column widths */
+@media (max-width: 1200px) {
+  .card {
+    width: 33.33%; /* 3 columns */
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 50%; /* 2 columns */
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%; /* 1 column */
+  }
+}
+
+/* === Light/Dark Mode === */
 body.light-mode {
   background-color: var(--bg-light);
   color: var(--text-color-light);
-}
-
-body.dark-mode {
-  background-color: var(--bg-dark);
-  color: var(--text-color-dark);
-}
-
-body.dark-mode header,
-body.dark-mode nav.main-nav,
-body.dark-mode .dropdown-menu {
-  background-color: var(--bg-dark);
 }
 
 body.dark-mode .card {
@@ -275,16 +296,36 @@ body.dark-mode .card {
   box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
 }
 
+body.dark-mode .card .title,
 body.dark-mode .card .category {
-  color: var(--text-color-dark);
-}
-
-body.dark-mode .card .title {
   color: var(--text-color-dark);
 }
 
 body.dark-mode .card img {
   border-bottom: 1px solid #444;
+}
+
+body.dark-mode .dropdown-menu {
+  background-color: #2a2a2a;
+  border-color: #444;
+}
+
+body.dark-mode .dropdown-menu button {
+  color: var(--text-color-dark);
+}
+
+body.dark-mode .dropdown-menu button:hover {
+  background-color: #444;
+}
+
+/* === Special Gray Buttons === */
+.header-buttons .header-btn {
+  background-color: var(--button-gray);
+  color: white;
+}
+
+.header-buttons .header-btn:hover {
+  background-color: var(--button-gray-hover);
 }
 
 /* === Lightbox === */
@@ -405,7 +446,6 @@ footer.contact-section a:hover {
   color: white;
 }
 
-
 /* === Buttons === */
 .contact-btn,
 .floating-contact-btn,
@@ -448,7 +488,7 @@ footer.contact-section a:hover {
   margin: 10px 20px;
 }
 
-/* === Hamburger Menu (Mobile) === */
+/* === Hamburger Menu === */
 .hamburger {
   display: none;
   font-size: 28px;
@@ -488,6 +528,38 @@ footer.contact-section a:hover {
     margin: 0.5rem 0;
   }
 }
+
+.lightbox-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 20px;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.lightbox-content img {
+  max-width: 400px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.lightbox-meta {
+  color: white;
+  flex: 1;
+  min-width: 200px;
+}
+
+.lightbox-meta p {
+  margin: 8px 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
 
 /* === Teaching Section (Temporarily Hidden) === */
 .card[data-category*="teaching"] {
