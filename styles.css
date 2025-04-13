@@ -204,7 +204,7 @@ nav.main-nav {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
-  transition: none;
+  transition: opacity 0.4s ease;
 }
 
 .grid-sizer {
@@ -212,9 +212,16 @@ nav.main-nav {
   float: left;
 }
 
-
 .card-inner {
   padding: 0 10px;
+}
+
+.card.hidden {
+  opacity: 0 !important;
+  transform: scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  position: absolute !important;
 }
 
 .card.visible {
@@ -574,8 +581,3 @@ footer.contact-section a:hover {
   line-height: 1.4;
 }
 
-
-/* === Teaching Section (Temporarily Hidden) === */
-.card[data-category*="teaching"] {
-  display: none !important;
-}

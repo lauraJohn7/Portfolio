@@ -9,12 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.querySelector(".hamburger");
     const mainMenu = document.querySelector(".main-menu");
   
+    let msnry;
+    let currentIndex = -1;
+    let allCards = [];
+  
     hamburger.addEventListener("click", () => {
       mainMenu.classList.toggle("open");
     });
-  
-    let currentIndex = -1;
-    let allCards = [];
   
     themeSwitch.addEventListener("change", () => {
       body.classList.toggle("dark-mode", themeSwitch.checked);
@@ -43,18 +44,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     function addImageCardsFromJSON(folder, categories, images) {
-        images.forEach((image) => {
-            const { file, title } = image;
-            const imgPath = `images/${folder}/${file}`;
+      images.forEach((image) => {
+        const { file, title } = image;
+        const imgPath = `images/${folder}/${file}`;
         const card = document.createElement("div");
         card.className = "card";
         card.setAttribute("data-category", categories.join(" "));
-
+  
         card.dataset.title = title;
         card.dataset.medium = image.medium || "";
         card.dataset.year = image.year || "";
         card.dataset.description = image.description || "";
-
+  
         const img = document.createElement("img");
         img.src = imgPath;
         img.alt = title;
@@ -84,76 +85,90 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     fetch("titles.json")
-  .then(response => response.json())
-  .then(data => {
-    // ✅ 1. Check if grid-sizer already exists
-    if (!cardsContainer.querySelector(".grid-sizer")) {
-        const gridSizer = document.createElement("div");
-        gridSizer.className = "grid-sizer";
-        cardsContainer.insertBefore(gridSizer, cardsContainer.firstChild);        
-    }
-
-    // ✅ 2. Add cards AFTER grid-sizer
-    data.forEach(group => {
-      addImageCardsFromJSON(group.folder, group.category, group.images);
-    });
-
-    allCards = Array.from(cardsContainer.querySelectorAll(".card"));
-
-    // ✅ 3. Wait until images are loaded, then init Masonry
-    imagesLoaded(cardsContainer, () => {
-      new Masonry(cardsContainer, {
-        itemSelector: ".card",
-        columnWidth: ".grid-sizer",
-        percentPosition: true,
-      });
-
-      cardsContainer.classList.add("ready"); // ⬅️ Makes gallery visible
-    });
-
-    // Lightbox click
-    cardsContainer.addEventListener("click", (event) => {
-      const img = event.target.closest("img");
-      const card = event.target.closest(".card");
-      if (img && card) {
-        currentIndex = allCards.indexOf(card);
-        openLightbox(
-            img.src,
-            card.dataset.title,
-            card.dataset.medium,
-            card.dataset.year,
-            card.dataset.description
-          );          
-      }
-    });
-  })
-  .catch(error => console.error("Failed to load titles.json", error));
-
-    filterButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const isTopLevelFilter = !button.closest(".dropdown-menu");
-        if (isTopLevelFilter && mainMenu.classList.contains("open")) {
-          mainMenu.classList.remove("open");
+      .then(response => response.json())
+      .then(data => {
+        if (!cardsContainer.querySelector(".grid-sizer")) {
+          const gridSizer = document.createElement("div");
+          gridSizer.className = "grid-sizer";
+          cardsContainer.insertBefore(gridSizer, cardsContainer.firstChild);
         }
   
-        const category = button.getAttribute("data-category");
-        cardsContainer.querySelectorAll(".card").forEach(card => {
-          const cardCategories = card.getAttribute("data-category").split(" ");
-          card.style.display = (category === "all" || cardCategories.includes(category) || category === "all_work") ? "inline-block" : "none";
+        data.forEach(group => {
+          addImageCardsFromJSON(group.folder, group.category, group.images);
+        });
+  
+        allCards = Array.from(cardsContainer.querySelectorAll(".card"));
+  
+        imagesLoaded(cardsContainer, () => {
+          msnry = new Masonry(cardsContainer, {
+            itemSelector: ".card",
+            columnWidth: ".grid-sizer",
+            percentPosition: true,
+          });
+          cardsContainer.classList.add("ready");
+          msnry.layout();
+        });
+  
+        cardsContainer.addEventListener("click", (event) => {
+          const img = event.target.closest("img");
+          const card = event.target.closest(".card");
+          if (img && card) {
+            currentIndex = allCards.indexOf(card);
+            openLightbox(
+              img.src,
+              card.dataset.title,
+              card.dataset.medium,
+              card.dataset.year,
+              card.dataset.description
+            );
+          }
+        });
+      })
+      .catch(error => console.error("Failed to load titles.json", error));
+  
+      filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          const isTopLevelFilter = !button.closest(".dropdown-menu");
+          if (isTopLevelFilter && mainMenu.classList.contains("open")) {
+            mainMenu.classList.remove("open");
+          }
+      
+          const category = button.getAttribute("data-category");
+      
+          cardsContainer.querySelectorAll(".card").forEach(card => {
+            const categories = card.getAttribute("data-category").split(" ");
+            const matches = category === "all" || category === "all_work" || categories.includes(category);
+            
+            if (matches) {
+              card.style.display = "";
+              card.classList.remove("hidden");
+            } else {
+              card.style.display = "none";
+              card.classList.add("hidden");
+            }
+          });
+      
+          // 🔁 Force reflow before relayout
+          void cardsContainer.offsetWidth;
+      
+          // ✅ Re-layout after visibility updates
+          if (typeof msnry !== "undefined") {
+            msnry.layout();
+          }
         });
       });
-    });
+      
+      
   
     function openLightbox(src, title, medium, year, description) {
-        lightboxImg.src = src;
-        document.getElementById("lightbox-title").textContent = title || "";
-        document.getElementById("lightbox-medium").textContent = medium ? `Medium: ${medium}` : "";
-        document.getElementById("lightbox-year").textContent = year ? `Year: ${year}` : "";
-        document.getElementById("lightbox-description").textContent = description || "";
-        lightbox.classList.remove("hidden");
-        lightbox.classList.add("fade-in");
-      }
-      
+      lightboxImg.src = src;
+      document.getElementById("lightbox-title").textContent = title || "";
+      document.getElementById("lightbox-medium").textContent = medium ? `Medium: ${medium}` : "";
+      document.getElementById("lightbox-year").textContent = year ? `Year: ${year}` : "";
+      document.getElementById("lightbox-description").textContent = description || "";
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("fade-in");
+    }
   
     lightbox.addEventListener("click", (event) => {
       if (event.target === lightbox || event.target === closeLightbox) {
@@ -183,8 +198,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const newCard = allCards[currentIndex];
         openLightbox(
           newCard.querySelector("img").src,
-          newCard.querySelector(".title").textContent
+          newCard.dataset.title,
+          newCard.dataset.medium,
+          newCard.dataset.year,
+          newCard.dataset.description
         );
       }
     });
   });
+  
