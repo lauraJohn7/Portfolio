@@ -100,12 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
         allCards = Array.from(cardsContainer.querySelectorAll(".card"));
   
         imagesLoaded(cardsContainer, () => {
+          cardsContainer.classList.add("ready");
+  
           msnry = new Masonry(cardsContainer, {
             itemSelector: ".card",
             columnWidth: ".grid-sizer",
             percentPosition: true,
           });
-          cardsContainer.classList.add("ready");
+  
           msnry.layout();
         });
   
@@ -126,39 +128,27 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => console.error("Failed to load titles.json", error));
   
-      filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
-          const isTopLevelFilter = !button.closest(".dropdown-menu");
-          if (isTopLevelFilter && mainMenu.classList.contains("open")) {
-            mainMenu.classList.remove("open");
-          }
-      
-          const category = button.getAttribute("data-category");
-      
-          cardsContainer.querySelectorAll(".card").forEach(card => {
-            const categories = card.getAttribute("data-category").split(" ");
-            const matches = category === "all" || category === "all_work" || categories.includes(category);
-            
-            if (matches) {
-              card.style.display = "";
-              card.classList.remove("hidden");
-            } else {
-              card.style.display = "none";
-              card.classList.add("hidden");
-            }
-          });
-      
-          // 🔁 Force reflow before relayout
-          void cardsContainer.offsetWidth;
-      
-          // ✅ Re-layout after visibility updates
-          if (typeof msnry !== "undefined") {
-            msnry.layout();
-          }
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const isTopLevelFilter = !button.closest(".dropdown-menu");
+        if (isTopLevelFilter && mainMenu.classList.contains("open")) {
+          mainMenu.classList.remove("open");
+        }
+  
+        const category = button.getAttribute("data-category");
+  
+        allCards.forEach(card => {
+          const categories = card.getAttribute("data-category").split(" ");
+          const matches = category === "all" || category === "all_work" || categories.includes(category);
+  
+          card.style.display = matches ? "block" : "none";
         });
+  
+        if (typeof msnry !== "undefined") {
+          msnry.layout();
+        }
       });
-      
-      
+    });
   
     function openLightbox(src, title, medium, year, description) {
       lightboxImg.src = src;
