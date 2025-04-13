@@ -43,9 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('.card').forEach(card => observer.observe(card));
     }
   
-    function addImageCardsFromJSON(folder, categories, images) {
+    function addImageCardsFromJSON(folder, categories, images) 
+    {
       images.forEach((image) => {
         const { file, title } = image;
+        console.log("CARD DEBUG:", title, categories.join(" "));
+
         const imgPath = `images/${folder}/${file}`;
         const card = document.createElement("div");
         card.className = "card";
