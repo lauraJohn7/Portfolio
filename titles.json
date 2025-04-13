@@ -1,12 +1,7 @@
 [
   {
     "folder": "ceramics/my_ceramics",
-    "category": [
-      "all_work",
-      "my_work",
-      "ceramics",
-      "my_ceramics"
-    ],
+    "category": ["all_work", "my_work", "my_ceramics"],
     "images": [
       {
         "file": "my_ceramics (1).jpg",
@@ -159,13 +154,7 @@
   },
   {
     "folder": "ceramics/student_ceramics/adv_ceramics",
-    "category": [
-      "all_work",
-      "student_work",
-      "ceramics",
-      "student_ceramics",
-      "adv_ceramics"
-    ],
+    "category": ["all_work", "student_work", "ceramics", "adv_ceramics"],
     "images": [
       {
         "file": "adv_ceramics (1).jpg",
@@ -500,13 +489,7 @@
   },
   {
     "folder": "ceramics/student_ceramics/beginner_ceramics",
-    "category": [
-      "all_work",
-      "student_work",
-      "ceramics",
-      "student_ceramics",
-      "beginner_ceramics"
-    ],
+    "category": ["all_work", "student_work", "ceramics", "beginner_ceramics"],
     "images": [
       {
         "file": "beginner_ceramics (1).jpg",
@@ -701,12 +684,7 @@
   },
   {
     "folder": "photography/my_photography",
-    "category": [
-      "all_work",
-      "my_work",
-      "photography",
-      "my_photography"
-    ],
+    "category": ["all_work", "my_work", "my_photography"],
     "images": [
       {
         "file": "my_photography (1).jpg",
@@ -908,12 +886,7 @@
   },
   {
     "folder": "photography/student_photography",
-    "category": [
-      "all_work",
-      "student_work",
-      "photography",
-      "student_photography"
-    ],
+    "category": ["all_work", "student_work", "photography", "student_photography"],
     "images": [
       {
         "file": "student_photography (1).jpg",
@@ -1276,12 +1249,7 @@
   },
   {
     "folder": "sculpture/my_sculpture",
-    "category": [
-      "all_work",
-      "my_work",
-      "sculpture",
-      "my_sculpture"
-    ],
+    "category": ["all_work", "my_work", "my_sculpture"],
     "images": [
       {
         "file": "my_sculpture (1).jpg",
@@ -1308,12 +1276,7 @@
   },
   {
     "folder": "sculpture/student_sculpture",
-    "category": [
-      "all_work",
-      "student_work",
-      "sculpture",
-      "student_sculpture"
-    ],
+    "category": ["all_work", "student_work", "ceramics", "student_sculpture"],
     "images": [
       {
         "file": "student_sculpture (1).jpg",
@@ -1403,12 +1366,7 @@
   },
   {
     "folder": "graphic_design/my_graphic_design",
-    "category": [
-      "all_work",
-      "my_work",
-      "graphic_design",
-      "my_graphic_design"
-    ],
+    "category": ["all_work", "my_work", "my_graphic_design"],
     "images": [
       {
         "file": "my_graphic_design (1).jpg",
@@ -1519,12 +1477,7 @@
   },
   {
     "folder": "graphic_design/student_graphic_design",
-    "category": [
-      "all_work",
-      "student_work",
-      "graphic_design",
-      "student_graphic_design"
-    ],
+    "category": ["all_work", "student_work", "digital", "student_graphic_design"],
     "images": [
       {
         "file": "student_graphic_design (1).jpg",
@@ -1607,11 +1560,7 @@
   },
   {
     "folder": "teaching",
-    "category": [
-      "all_work",
-      "my_work",
-      "teaching"
-    ],
+    "category": ["teaching"],
     "images": [
       {
         "file": "teaching (1).jpg",
@@ -1709,9 +1658,7 @@
   {
     "folder": "yearbook",
     "category": [
-      "all_work",
-      "my_work",
-      "yearbook"
+      "all_work", "yearbook"
     ],
     "images": [
       {
