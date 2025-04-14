@@ -689,8 +689,8 @@
       {
         "file": "my_photography (1).jpg",
         "title": "Tunnel Light",
-        "medium": "Placeholder medium",
-        "year": "Placeholder year",
+        "medium": "DSLR",
+        "year": "2018",
         "description": "Placeholder description"
       },
       {
@@ -878,6 +878,110 @@
       {
         "file": "my_photography (29).jpg",
         "title": "In Camera",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "my_photography (30).jpg",
+        "title": "My Happy Place",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "my_photography (31).jpg",
+        "title": "Great Falls",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "my_photography (32).jpg",
+        "title": "Katie and Kestrel",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "my_photography (33).jpg",
+        "title": "The DCeivers",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "my_photography (34).jpg",
+        "title": "Super Moon",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "my_photography (35).jpg",
+        "title": "Slow Fireworks",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "my_photography (35).jpg",
+        "title": "Perseid",
+        "medium": "Placeholder medium",
+        "year": "2018",
+        "description": "Placeholder description"
+      }
+    ]
+  },
+  {
+    "folder": "photography/ap_photography",
+    "category": ["all_work", "student_work", "photography", "ap_photography"],
+    "images": [
+      {
+        "file": "student_photography (1).jpg",
+        "title": "Time - The Ghost Bike (AP-5)",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "student_photography (2).jpg",
+        "title": "Time - Literally on fire. (AP-5)",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "student_photography (3).jpg",
+        "title": "Time - Busy Bees (AP-5)",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "student_photography (4).jpg",
+        "title": "The Golden Hour (AP-5)",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "student_photography (5).jpg",
+        "title": "Time - Bean There, Done That (AP-5)",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "student_photography (6).jpg",
+        "title": "Time - Rush Hour (AP-5)",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "student_photography (7).jpg",
+        "title": "Quality (AP-5)",
         "medium": "Placeholder medium",
         "year": "Placeholder year",
         "description": "Placeholder description"
@@ -1481,10 +1585,10 @@
     "images": [
       {
         "file": "student_graphic_design (1).jpg",
-        "title": "Art Deco Bethesda",
-        "medium": "Placeholder medium",
-        "year": "Placeholder year",
-        "description": "Placeholder description"
+        "title": "Harper Flamingo",
+        "medium": "Adobe Illustrator",
+        "year": "2025",
+        "description": "Charley Harper inspired animals."
       },
       {
         "file": "student_graphic_design (2).jpg",
@@ -1555,6 +1659,13 @@
         "medium": "Placeholder medium",
         "year": "Placeholder year",
         "description": "Placeholder description"
+      },
+      {
+        "file": "student_graphic_design (12).jpg",
+        "title": "Art Deco Bethesda",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
       }
     ]
   },
@@ -1564,24 +1675,23 @@
     "images": [
       {
         "file": "teaching (1).jpg",
-        "title": "Lesson Plan 1",
+        "title": "Ceramics",
         "medium": "Placeholder medium",
-        "year": "Placeholder year",
+        "year": "2025",
         "description": "Placeholder description"
       },
       {
         "file": "teaching (2).jpg",
-        "title": "Lesson Plan 2",
-        "medium": "Placeholder medium",
-        "year": "Placeholder year",
-        "description": "Placeholder description"
+        "title": "Getting Creative",
+        "year": "2020",
+        "description": "We got creative during COVID. As we were working outside in tents, and gloves and ceramics don't mix, we carried our slab bird houses to the nearest firepit."
       },
       {
         "file": "teaching (3).jpg",
-        "title": "Lesson Plan 3",
-        "medium": "Placeholder medium",
-        "year": "Placeholder year",
-        "description": "Placeholder description"
+        "title": "Critique",
+        "medium": "Ceramics",
+        "year": "2021",
+        "description": "First group critique post remote learning."
       },
       {
         "file": "teaching (4).jpg",
@@ -1671,6 +1781,13 @@
       {
         "file": "yearbook (2).jpg",
         "title": "Cover Design Award",
+        "medium": "Placeholder medium",
+        "year": "Placeholder year",
+        "description": "Placeholder description"
+      },
+      {
+        "file": "yearbook (3).jpg",
+        "title": "2024 Yearbook Cover",
         "medium": "Placeholder medium",
         "year": "Placeholder year",
         "description": "Placeholder description"
